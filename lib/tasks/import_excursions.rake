@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'net/http'
-require_relative '../../app/models/city'
-
 namespace :import do
   desc 'Import excursions from Sputnik8'
   task cities: :environment do

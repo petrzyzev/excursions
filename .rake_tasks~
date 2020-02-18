@@ -37,6 +37,7 @@ log:clear
 middleware
 restart
 secret
+spec
 stats
 test
 test:db

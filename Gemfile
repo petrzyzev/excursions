@@ -14,6 +14,8 @@ gem 'bootstrap', '~> 4.4.1'
 
 gem 'jquery-rails'
 
+gem 'dotenv-rails'
+
 gem 'rubocop', require: false
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'

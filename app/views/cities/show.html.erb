@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= @city.name %>
+</p>
+<table>
+  <tbody>
+    <% @city.activities.first(30).each do |activity|%>
+      <tr>
+        <td><%= activity.title%>
+        <td><%= activity.price%>
+        <td><%= link_to 'Show', activity %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

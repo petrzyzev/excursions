@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cities</h1>
+
+<table>
+  <tbody>
+    <% @cities.select{ |c| !c.activities.empty? }.first(5).each do |city| %>
+      <tr>
+        <td><%= city.name %></td>
+        <td><%= link_to 'Show', city %></td>
+        <% city.activities.first(5).each do |activity|%>
+          <tr>
+            <td><%= activity.title%>
+            <td><%= activity.price%>
+            <td><%= link_to 'Show', activity %></td>
+          </tr>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

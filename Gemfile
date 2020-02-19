@@ -12,6 +12,8 @@ gem 'puma', '~> 4.1'
 
 gem 'bootstrap', '~> 4.4.1'
 
+gem 'tsv'
+
 gem 'jquery-rails'
 
 gem 'dotenv-rails'

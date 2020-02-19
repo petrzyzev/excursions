@@ -1,21 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cities</h1>
+<h1>Экскурсии</h1>
 
 <table>
   <tbody>
-    <% @cities.select{ |c| !c.activities.empty? }.first(5).each do |city| %>
-      <tr>
-        <td><%= city.name %></td>
-        <td><%= link_to 'Show', city %></td>
-        <% city.activities.first(5).each do |activity|%>
-          <tr>
-            <td><%= activity.title%>
-            <td><%= activity.price%>
-            <td><%= link_to 'Show', activity %></td>
-          </tr>
-        <% end %>
-      </tr>
+    <% @cities.each do |city| %>
+      <div>
+        <tr>
+          <p><%= link_to city.name, city %></p>
+          <% city.activities.each do |activity|%>
+            <tr>
+              <p><%= image_tag(activity.photo, size: "300x200") %></p>
+              <p><%= link_to activity.title, activity %></p>
+              <p><%= activity.price%></p>
+            </tr>
+          <% end %>
+        </tr>
+      </div>
     <% end %>
   </tbody>
 </table>

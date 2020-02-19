@@ -38,6 +38,12 @@ middleware
 restart
 secret
 spec
+spec:controllers
+spec:helpers
+spec:models
+spec:requests
+spec:routing
+spec:views
 stats
 test
 test:db

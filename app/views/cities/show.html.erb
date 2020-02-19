@@ -5,13 +5,22 @@
 </p>
 <table>
   <tbody>
-    <% @city.activities.first(30).each do |activity|%>
+    <% @activities.each do |activity|%>
+      <p><%= image_tag(activity.photo, size: "400x300") %></p>
       <tr>
-        <td><%= activity.title%>
-        <td><%= activity.price%>
-        <td><%= link_to 'Show', activity %></td>
+        <p><%= link_to activity.title, activity %></p>
+        <p>
+            <strong>Цена:</strong>
+            <%= activity.price%>
+        </p>
+        <p>
+          <strong>Количество просмотров:</strong>
+          <%= activity.view_visits.count%>
+        </p>
       </tr>
     <% end %>
+    <p><%= link_to 'Сортировать по просмотрам', city_path %></p>
+    <p><%= link_to 'Сортировать по цене', city_path(order: 'price') %></p>
   </tbody>
 </table>
 

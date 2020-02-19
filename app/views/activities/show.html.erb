@@ -1,22 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>City:</strong>
   <%= @activity.city.name %>
 </p>
 
+<p><%= image_tag(@activity.photo, size: "400x300") %></p>
+
 <p>
-  <strong>Title:</strong>
   <%= @activity.title %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Описание:</strong>
   <%= @activity.description %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>Цена:</strong>
   <%= @activity.price %>
+</p>
+
+<p>
+  <strong>Количество просмотров:</strong>
+  <%= @activity.view_visits.count %>
 </p>
 

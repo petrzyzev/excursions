@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_181436) do
+ActiveRecord::Schema.define(version: 2020_02_19_110826) do
 
   create_table "activities", force: :cascade do |t|
     t.integer "city_id", null: false
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 2020_02_15_181436) do
     t.string "photo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "view_visits", force: :cascade do |t|
+    t.integer "view_id"
+    t.integer "visit_id"
+    t.integer "activity_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_view_visits_on_activity_id"
   end
 
   add_foreign_key "activities", "cities"

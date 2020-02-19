@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'tsv'
+
 namespace :import do
   desc 'Import excursions from Sputnik8'
   task cities: :environment do
@@ -34,17 +36,30 @@ namespace :import do
     uri.query = URI.encode_www_form(request_params)
     response = Net::HTTP.get_response(uri)
     products = JSON.parse(response.body, symbolize_names: true)
-    activities_attrs = products.map do |p|
-      { id:          p[:id],
-        title:       p[:title],
-        description: p[:description],
-        city_id:     p[:city_id],
-        price:       p[:price],
-        photo:       p[:cover_photo][:big] }
+    activities_attrs = products.map do |product|
+      { id: product[:id],
+        title: product[:title],
+        description: product[:description],
+        city_id: product[:city_id],
+        price: product[:price],
+        photo: product[:cover_photo][:big] }
     end
 
     Activity.transaction do
       Activity.create(activities_attrs)
+    end
+  end
+  task views: :environment do
+    filenames = ['views-1.tsv', 'views-2.tsv', 'views-3.tsv']
+    attrs = filenames.map do |filename|
+      TSV[filename].map do |row|
+        view_id, visit_id, activ_id = row.data.map(&:to_i)
+        { view_id: view_id, visit_id: visit_id, activity_id: activ_id }
+      end
+    end
+
+    ViewVisit.transaction do
+      ViewVisit.create(attrs.flatten)
     end
   end
 end

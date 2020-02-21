@@ -1,24 +1,17 @@
-# README
+# Excursions
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project for viewing excursions
 
-Things you may want to cover:
+## To run project:
 
-* Ruby version
+`bundle install`
 
-* System dependencies
+`rails db:migrate`
 
-* Configuration
+`rake import:cities`
 
-* Database creation
+`rake import:activities`
 
-* Database initialization
+`rake import:views`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`rails s`

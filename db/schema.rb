@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2020_02_19_110826) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: :cascade do |t|
-    t.integer "city_id", null: false
+    t.bigint "city_id", null: false
     t.string "title"
     t.string "description"
     t.string "photo"
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_110826) do
   create_table "view_visits", force: :cascade do |t|
     t.integer "view_id"
     t.integer "visit_id"
-    t.integer "activity_id"
+    t.bigint "activity_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_id"], name: "index_view_visits_on_activity_id"
